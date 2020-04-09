@@ -41,15 +41,19 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  callApi =async () => {
+  callApi = async () => {
     const response  = await fetch('/api/customers');
     const body = await response.json();
+
     return body; 
   }
 
   progress = () => {
     const { completed} = this.state;
     this.setState({ completed: completed >= 100? 0 : completed + 1 });
+  }
+  stateRefresh = () => {
+    window.location.reload();
   }
 
   render() {
@@ -66,12 +70,13 @@ class App extends Component {
               <TableCell>생년월일</TableCell>
               <TableCell>성별</TableCell>
               <TableCell>직업</TableCell>
+              <TableCell>설정</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
            {this.state.customers? this.state.customers.map(c => {
             return (
-              <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />
+              <Customer stateRefresh={this.stateRefresh}  key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />
             ); }) : 
             <TableRow>
               <TableCell colSpan="6" align="center" >
