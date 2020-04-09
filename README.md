@@ -1,3 +1,6 @@
+## Managent System
+본 프로젝트는 React 실습을 위해서 만들어진 고객 관리 시스템(Management System)입니다.
+    
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
